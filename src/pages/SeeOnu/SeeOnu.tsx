@@ -122,9 +122,9 @@ const SeeOnu: React.FC = () => {
               <h2>SAVED INFORMATION</h2>
               <section>
               <input type='search' onChange={HandleChanges.handleText} value={textsearch} placeholder='Search'></input>
-              <select value={selectedOption} onChange={HandleChanges.handleSelectChange}>
+              <select value={selectedOption}  onChange={HandleChanges.handleSelectChange}>
                 {list.map(value=>(
-                   <option value={value}>{value}</option>
+                   <option value={value} key={value}>{value}</option>
                 ))}
               </select>
               <Buttons authentication={()=>{
@@ -137,7 +137,7 @@ const SeeOnu: React.FC = () => {
               {listOnu?.map !== undefined?(
                 <>
                    {listOnu.map(value=>(
-                    <SeeOnuElement id={value.id} ont_id={value.ont_id} port={value.port} slot={value.slot} sn={value.sn} state={value.state} origin={value.origin}></SeeOnuElement>
+                    <SeeOnuElement id={value.id} ont_id={value.ont_id} port={value.port} slot={value.slot} sn={value.sn} state={value.state} origin={value.origin} key={value.id}></SeeOnuElement>
                   ))}
                 </>
               ):null}

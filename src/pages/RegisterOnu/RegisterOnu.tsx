@@ -54,6 +54,7 @@ const RegisterOnu: React.FC = () => {
     if(selectFile=="HUAWEI"){
       if(fileHuawei && fileHuawei !== undefined){
        
+       if(fileHuawei.type == "text/plain"){
         const Onu:createOnu = {
           type: "Huawei",
           file: fileHuawei
@@ -66,37 +67,42 @@ const RegisterOnu: React.FC = () => {
           }else{
             if(valueN == "user erro"){
               
-              setTextErro("Arquivo com problema")
+              setTextErro("Problem file")
             }
           }
         })
+       }else{
+        setTextErro("File is missing!")
+       }
       }else{
-      
         setTextErro("File is missing!")
       }
     }else if(selectFile =="ZTE"){
       
       if(fileZetOne && fileZetTwo){
-      
-        const Onu:createOnu = {
-          type: "ZTE",
-          dataOne:fileZetOne,
-          dataTwo: fileZetTwo
-        }
-        const result = authenticationAddO(Onu)
-        result.then(valueN =>{
-          if(valueN === "Onu created successfully."){
-            setTextErro("Sent with success!")
-            navigate("/SeeOnu")
-          }else if(valueN == "erro data empty"){
-            setTextErro("Your data is empty")
-          }else{
-            if(valueN == "user erro"){
-             
-              setTextErro("You are sending the same files")
-            }
+        if(fileZetOne.type == "text/plain" && fileZetTwo.type == "text/plain"){
+          const Onu:createOnu = {
+            type: "ZTE",
+            dataOne:fileZetOne,
+            dataTwo: fileZetTwo
           }
-        })
+          const result = authenticationAddO(Onu)
+          result.then(valueN =>{
+            if(valueN === "Onu created successfully."){
+              setTextErro("Sent with success!")
+              navigate("/SeeOnu")
+            }else if(valueN == "erro data empty"){
+              setTextErro("Your data is empty")
+            }else{
+              if(valueN == "user erro"){
+               
+                setTextErro("You are sending the same files")
+              }
+            }
+          })
+        }else{
+          setTextErro("File(s) is not txt")
+        }
       }else{
       
         setTextErro("File is missing!")
@@ -111,9 +117,14 @@ const RegisterOnu: React.FC = () => {
         <p className='inforRegister'>Here you can upload two types of files, both ZTE and Huawei, the Huawei which only has one file and the ZTE which needs two.</p>
         <div className='divSelectRegister' style={{display:"flex"}}>
         {list.map(value=>(  
-          <Select children={value} authentication={()=>{
+          <Select children={value} key={value} authentication={()=>{
             setSelectFile(value)
-            
+            setFileHuawei(undefined)
+            setFileZetOne(undefined)
+            setFileZetTwo(undefined)
+            setNameFile("Upload Huawei")
+            setNameFileOne("Upload ZTE One")
+            setNameFileTwo("Upload ZTE Two")
           }} selected={selectFile == value}></Select>
         ))}
         </div>
