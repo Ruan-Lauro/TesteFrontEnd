@@ -87,6 +87,7 @@ const RegisterOnu: React.FC = () => {
         result.then(valueN =>{
           if(valueN === "Onu created successfully."){
             setTextErro("Sent with success!")
+            navigate("/SeeOnu")
           }else if(valueN == "erro data empty"){
             setTextErro("Your data is empty")
           }else{
