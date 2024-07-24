@@ -1,0 +1,23 @@
+.selectionDiv{
+    border-radius: 0.5rem;
+    width: 5rem;
+    padding: 0.3rem;
+    text-align: center;
+    background-color: white;
+    cursor: pointer;
+    display: flex;
+}
+
+.selectionDivS{
+    border-radius: 0.5rem;
+    color: white;
+    width: 5rem;
+    padding: 0.3rem;
+    text-align: center;
+    background-color: #1a1a1a;
+    cursor: pointer;
+}
+
+.pSelect {
+    font-size: 18px;
+}

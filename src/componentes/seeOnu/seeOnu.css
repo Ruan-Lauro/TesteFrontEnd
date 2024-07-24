@@ -1,0 +1,39 @@
+.mainSeeOnuElement{
+    width: 100%;
+    display: flex;
+    border-bottom: 1px solid black;   
+}
+
+.divSeeOnuElement{
+    border-right: 1px solid black;
+
+}
+
+#divElement{
+    width: 15%;
+    border-right: 0;
+}
+
+.pSeeOnuElement{
+    font-size: 16px;
+    font-weight: 500;
+    color: white;
+    margin-right: 10px;
+}
+
+@media (max-width: 450px) {
+    .pSeeOnuElement{
+        font-size: 12px;
+        
+    }
+}
+
+@media (max-width:  390px) {
+    .divSeeOnuElement{
+        border-right: 1px solid black;
+        width: 20%;
+        overflow: auto;
+    }
+
+    
+}

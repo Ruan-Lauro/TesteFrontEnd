@@ -1,0 +1,28 @@
+.btn {
+    width: 100px;
+    height: 42px;
+    background: #1a1a1a;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 20px;
+    transition: 0.3s;
+  }
+  .btn:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+  }
+
+  @media (max-width: 450px) {
+    .btn {
+      width: 80px;
+      height: 40px;
+      background: #1a1a1a;
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      transition: 0.3s;
+      
+    }
+}
